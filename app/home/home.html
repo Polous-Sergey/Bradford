@@ -1,0 +1,138 @@
+<div ng-cloak>
+    <!--<md-toolbar class="md-warn">-->
+        <!--<div class="md-toolbar-tools">-->
+            <!--<h2 class="md-flex">Weater information</h2>-->
+            <!--<div class="currentLocation"><h2>Current location: </h2>-->
+                <!--<p>country: {{country}}</p>-->
+                <!--<p>city: {{city}}</p></div>-->
+
+        <!--</div>-->
+    <!--</md-toolbar>-->
+    <!--<div class="searchInput">-->
+        <!--<md-input-container class="md-block" flex-gt-sm>-->
+            <!--<label>Enter the name of the city</label>-->
+            <!--<input ng-model="cityName">-->
+        <!--</md-input-container>-->
+    <!--</div>-->
+    <div class="bodyContent">
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="text information">
+                    <div ng-controller="nutritionController">
+                        <div class="dataHeaders">
+                            <h2>{{informationHeaders[0]}}</h2>
+                            <h3>{{informationHeaders[1]}}</h3>
+
+                            <h5>{{informationHeaders[2]}}{{informationHeaders[3]}}{{informationHeaders[4]}}</h5>
+                        </div>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Search information</label>
+                            <input ng-model="fltr">
+                        </md-input-container>
+
+                        <div class="container-fluid">
+                            <div ng-controller="nutritionController">
+
+                                <table class="table table-striped table-hover table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Month</th>
+                                        <th>T-max</th>
+                                        <th>T-min</th>
+                                        <th>Af days</th>
+                                        <th>Rain</th>
+                                        <th>Sun</th>
+                                        <th>Prov</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="obj in finalInf | filter : paginate">
+                                        <td>{{obj.year}}</td>
+                                        <td>{{obj.month}}</td>
+                                        <td>{{obj.tmax}}</td>
+                                        <td>{{obj.tmin}}</td>
+                                        <td>{{obj.afdays}}</td>
+                                        <td>{{obj.rainmm}}</td>
+                                        <td>{{obj.sunhrs}}</td>
+                                        <td>{{obj.prov}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <pagination total-items="finalInf.length" ng-model="currentPage"
+                                            max-size="5" boundary-links="true"
+                                            items-per-page="numPerPage" class="pagination-sm">
+                                </pagination>
+                            </div>
+                        </div>
+
+
+                                        <!--<tr md-row-->
+                                            <!--ng-repeat="item in finalInf | filter: fltr | orderBy: query.order  | limitTo: query.limit : (query.page -1) * query.limit">-->
+                                            <!--<td md-cell>{{item.year}}</td>-->
+                                            <!--<td md-cell>{{item.month}}</td>-->
+                                            <!--<td md-cell>{{item.tmax}}</td>-->
+                                            <!--<td md-cell>{{item.tmin}}</td>-->
+                                            <!--<td md-cell>{{item.afdays}}</td>-->
+                                            <!--<td md-cell>{{item.rainmm}}</td>-->
+                                            <!--<td md-cell>{{item.sunhrs}}</td>-->
+                                            <!--<td md-cell>{{item.prov}}</td>-->
+                                        <!--</tr>-->
+
+                    </div>
+                </md-tab>
+                <md-tab href="#!/view2" label="graphs">
+                    <md-content class="md-padding" ng-controller="nutritionController">
+
+                        <div>
+                            <h1 class="md-title">Pick an information below</h1>
+                            <div layout="row">
+                                <md-input-container>
+                                    <label>Month</label>
+                                    <md-select ng-model="selectedItem" md-selected-text="getSelectedText()">
+                                        <md-optgroup label="Month">
+                                            <md-option ng-value="item" ng-repeat="item in items">{{item}}</md-option>
+                                        </md-optgroup>
+                                    </md-select>
+                                </md-input-container>
+
+                                <md-input-container>
+                                    <label>Items</label>
+                                    <md-select ng-model="selectedItem1" md-selected-text="getSelectedText1()">
+                                        <md-optgroup label="items">
+                                            <md-option ng-value="item1" ng-repeat="item1 in items1">{{item1}}</md-option>
+                                        </md-optgroup>
+                                    </md-select>
+                                </md-input-container>
+                                <md-button ng-click="generatorGrafics()">+</md-button>
+                            </div>
+                        </div>
+
+                        <canvas id="line" class="chart chart-line" chart-data="data"
+                                chart-labels="labels" chart-series="series" chart-options="options"
+                                chart-dataset-override="datasetOverride" chart-click="onClick">
+                            </canvas>
+                    </md-content>
+                </md-tab>
+                <!--<md-tab label="credits">-->
+                    <!--<md-content class="md-padding">-->
+                        <!--<h1 class="md-display-2">Tab Three</h1>-->
+                        <!--<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere-->
+                            <!--molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit-->
+                            <!--erat,-->
+                            <!--at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est.-->
+                            <!--Praesent-->
+                            <!--ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>-->
+                    <!--</md-content>-->
+                <!--</md-tab>-->
+            </md-tabs>
+        </md-content>
+    </div>
+    <div>
+
+
+    </div>
+
+</div>

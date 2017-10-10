@@ -1,0 +1,54 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+.md-toolbar-tools {
+  background-color: rgb(63,81,181);
+}
+.bodyContent {
+  margin: 0 2%;
+}
+.currentLocation {
+  position: absolute;
+  right: 1%;
+  font-size: medium;
+}
+p{
+  display: inline-block;
+}
+.currentLocation p {
+  margin: 0;
+}
+.searchInput {
+  width: 50%;
+  margin-left: 30%;
+}
+.paddingO {
+  margin:0;
+  padding:0;
+}
+.dataHeaders h2, h3, h5 {
+  color: #565656;
+  margin:5px;
+}
